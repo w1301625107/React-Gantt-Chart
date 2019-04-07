@@ -1,0 +1,53 @@
+{
+  "name": "r-gantt-chart",
+  "version": "0.1.0",
+  "description": "display gantt-like vaule,like use this to order bus schedule.",
+  "main": "/lib/r-gantt-chart.js",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/w1301625107/React-Gantt-chart.git"
+  },
+  "bugs": {
+    "url": "https://github.com/w1301625107/React-Gantt-chart/issues"
+  },
+  "homepage": "https://github.com/w1301625107/React-Gantt-chart#readme",
+  "keywords": [
+    "gantt",
+    "gantt-chart",
+    "r-gantt-chart",
+    "react-gantt-chart"
+  ],
+  "author": "wuchouchou",
+  "license": "MIT",
+  "dependencies": {
+    "dayjs": "^1.8.12",
+    "memoize-one": "^5.0.2",
+    "resize-observer-polyfill": "^1.5.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "devDependencies": {
+    "react": "^16.8.6",
+    "@types/memoize-one": "^4.1.1",
+    "@types/node": "^11.13.0",
+    "@types/react": "^16.8.12",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.7",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.4.2",
+    "url-loader": "^1.1.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  }
+}
