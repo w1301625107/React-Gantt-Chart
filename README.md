@@ -8,7 +8,7 @@
 
 ### [Vue版本](https://github.com/w1301625107/Vue-Gantt-chart)
 
-### [Demo预览地址](https://w1301625107.github.io/Vue-Gantt-chart/dist/index)
+### [Demo预览地址](https://w1301625107.github.io/Demo-React-Gantt-Chart/build/index)
 
 ## Feature
 
