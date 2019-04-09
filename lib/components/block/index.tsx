@@ -43,13 +43,14 @@ class Block extends DynamicRender<IBlock>{
       backgroundSize: `${cellWidth}px ${cellHeight}px`,
       height: `${cellHeight}px`
     };
-    const showDatas = datas.slice(...this.getRange())
+    const [startNum,endNum,topSpace] = this.getRangeAndTopSpace()
+    const showDatas = datas.slice(startNum,endNum)
 
     return (
       <div className="gantt-blocks"
         style={{ height: blockHeight, width: totalWidth }}>
         <div className="gantt-block gantt-block-top-space"
-          style={{ height: this.calTopSpace() + 'px' }}>
+          style={{ height: topSpace + 'px' }}>
         </div>
         {
           showDatas.map((data, index) => {

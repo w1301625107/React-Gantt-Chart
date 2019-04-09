@@ -14,14 +14,15 @@ class Leftbar extends DynamicRender<ILeftbar>{
 
   public render() {
     const { cellHeight, datas, dataKey,visualHeight,renderLeftBar } = this.props
-    const showDatas = datas.slice(...this.getRange())
+    const [startNum,endNum,topSpace] = this.getRangeAndTopSpace()
+    const showDatas = datas.slice(startNum,endNum)
 
     return (
       <div className="gantt-leftbar" style={
         {height:visualHeight}
       }>
         <div className="gantt-leftbar-item gantt-block-top-space"
-          style={{ height: this.calTopSpace() + 'px' }}>
+          style={{ height: topSpace + 'px' }}>
         </div>
         {
           showDatas.map((data, index) => {
