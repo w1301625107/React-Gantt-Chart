@@ -16,14 +16,15 @@ import {
 } from "./utils/gtUtils.js";
 
 import Timeline from './components/timeline'
-import Block from './components/block'
-import Leftbar from './components/leftbar'
+import Block ,{renderBlockFunc}from './components/block'
+import Leftbar ,{renderLeftBarFunc}from './components/leftbar'
 import CurrentTime from './components/markline/current-time'
 import Markline from './components/markline/index'
 
-interface ITimeline {
+type timelineItem ={
   time: string, color: string
 }
+
 
 interface IGanttProps {
   startTime: string;
@@ -39,10 +40,9 @@ interface IGanttProps {
   hideHeader: boolean;
   datas: any[];
   dataKey?: string;
-  timelines: ITimeline[],
-  scrollToTime?: string;
-  renderLeftBar: (data) => JSX.Element;
-  renderBlock: (data, getPositonOffset: (date: string) => number, getWidthAbout2Times: (time1: string, time2: string) => number, isInRenderingTimeRange: (time: string) => boolean, startTimeOfRenderArea: number, endTimeOfRenderArea: number) => JSX.Element;
+  timelines: timelineItem[],
+  renderLeftBar: renderLeftBarFunc;
+  renderBlock:renderBlockFunc;
   renderHeader?: () => JSX.Element
 }
 
@@ -51,8 +51,8 @@ interface IGanttState {
   widthOfRenderAera: number,
   scrollTop: number,
   scrollLeft: number,
-  startTimeOfRenderArea: number | undefined,
-  endTimeOfRenderArea: number | undefined
+  startTimeOfRenderArea: number ,
+  endTimeOfRenderArea: number 
 }
 
 const SCROLL_BAR_WIDTH = 17;
@@ -69,8 +69,8 @@ class App extends React.Component<IGanttProps, IGanttState> {
       widthOfRenderAera: 0,
       scrollTop: 0,
       scrollLeft: 0,
-      startTimeOfRenderArea: undefined,
-      endTimeOfRenderArea: undefined
+      startTimeOfRenderArea: 0,
+      endTimeOfRenderArea: 0
     }
   }
   private headerTimelineRef = React.createRef<HTMLDivElement>()
@@ -144,10 +144,10 @@ class App extends React.Component<IGanttProps, IGanttState> {
     const y = Number.isNaN(position.y!) ? undefined : position.y;
     const { scrollLeft, scrollTop } = this.state
     if (isDef(x) && x !== scrollLeft) {
-      this.syncScrollX({ target: { scrollLeft: x } }, true);
+      this.syncScrollX({ target: { scrollLeft: x! } }, true);
     }
     if (isDef(y) && y !== scrollTop) {
-      this.syncScrollY({ target: { scrollTop: y } }, true);
+      this.syncScrollY({ target: { scrollTop: y! } }, true);
     }
   }
 

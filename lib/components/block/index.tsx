@@ -1,7 +1,14 @@
 import * as React from 'react'
 
 import { DynamicRender, IDynamicRender } from '../dynamic-render'
-import { isUndef, warn } from "../../utils/tool.js"
+
+export type renderBlockFunc = (
+  data,
+  getPositonOffset: (date: string) => number,
+  getWidthAbout2Times: (time1: string, time2: string) => number, isInRenderingTimeRange: (time: string) => boolean,
+  startTimeOfRenderArea: number,
+  endTimeOfRenderArea: number
+) => JSX.Element
 
 interface IBlock extends IDynamicRender {
   datas: any[];
@@ -10,11 +17,11 @@ interface IBlock extends IDynamicRender {
   totalWidth: number;
   cellWidth: number;
   scrollLeft: number;
-  endTimeOfRenderArea?: number;
-  startTimeOfRenderArea?: number;
+  endTimeOfRenderArea: number;
+  startTimeOfRenderArea: number;
   getPositonOffset: (date: string) => number;
   getWidthAbout2Times: (time1: string, time2: string) => number;
-  renderBlock: (data, getPositonOffset: (date: string) => number, getWidthAbout2Times: (time1: string, time2: string) => number, isInRenderingTimeRange: (time: string) => boolean, startTimeOfRenderArea: number, endTimeOfRenderArea: number) => JSX.Element;
+  renderBlock: renderBlockFunc;
 }
 
 class Block extends DynamicRender<IBlock>{
@@ -25,7 +32,7 @@ class Block extends DynamicRender<IBlock>{
     }
 
     const { startTimeOfRenderArea, endTimeOfRenderArea } = this.props;
-    if (isUndef(startTimeOfRenderArea) || isUndef(endTimeOfRenderArea)) {
+    if (startTimeOfRenderArea === endTimeOfRenderArea) {
       return false;
     }
 
@@ -43,8 +50,8 @@ class Block extends DynamicRender<IBlock>{
       backgroundSize: `${cellWidth}px ${cellHeight}px`,
       height: `${cellHeight}px`
     };
-    const [startNum,endNum,topSpace] = this.getRangeAndTopSpace()
-    const showDatas = datas.slice(startNum,endNum)
+    const [startNum, endNum, topSpace] = this.getRangeAndTopSpace()
+    const showDatas = datas.slice(startNum, endNum)
 
     return (
       <div className="gantt-blocks"

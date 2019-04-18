@@ -2,12 +2,14 @@ import * as React from 'react'
 
 import { DynamicRender, IDynamicRender } from '../dynamic-render'
 
+export type renderLeftBarFunc =  (data) => JSX.Element
+ 
 
 interface ILeftbar extends IDynamicRender {
   datas: any[];
   dataKey?: string;
   visualHeight:number,
-  renderLeftBar?:(data)=>JSX.Element
+  renderLeftBar?:renderLeftBarFunc
 }
 
 class Leftbar extends DynamicRender<ILeftbar>{
