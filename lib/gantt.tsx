@@ -13,7 +13,7 @@ import {
 import {
   getPositonOffset as _getPositonOffset,
   getWidthAbout2Times as _getWidthAbout2Times
-} from "./utils/gtUtils.js";
+} from "./utils/gtUtils";
 
 import Timeline from './components/timeline'
 import Block ,{renderBlockFunc}from './components/block'
