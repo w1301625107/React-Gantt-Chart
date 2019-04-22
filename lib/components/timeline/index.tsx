@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import dayjs from 'dayjs'
-import { getBeginTimeOfTimeLine } from "../../utils/timeLineUtils.js";
+import { getBeginTimeOfTimeLine } from "../../utils/timeLineUtils";
 
 const START_DAY = Symbol();
 const MIDDLE_DAY = Symbol();

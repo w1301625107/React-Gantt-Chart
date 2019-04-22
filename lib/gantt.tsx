@@ -9,7 +9,7 @@ import {
   scaleList,
   getBeginTimeOfTimeLine,
   calcScalesAbout2Times
-} from "./utils/timeLineUtils.js"
+} from "./utils/timeLineUtils"
 import {
   getPositonOffset as _getPositonOffset,
   getWidthAbout2Times as _getWidthAbout2Times

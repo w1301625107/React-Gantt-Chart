@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 
-export const scaleList = [1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60, 120, 180,
+export const scaleList:number[] = [1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60, 120, 180,
   240,
   360, 720, 1440
 ]
@@ -11,7 +11,7 @@ export const scaleList = [1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60, 120, 180,
  * @param {number} scale
  * @returns
  */
-export function validateScale(scale) {
+export function validateScale(scale:number) {
   if (!scaleList.includes(scale)) {
     throw new RangeError(
       `错误的scale值，输入值为${scale},可用的scale值为${scaleList.join(',')}`)
@@ -30,11 +30,11 @@ export function validateScale(scale) {
  * @param {number} [scale=60]
  * @returns {dayjs.Dayjs}计算的启始时间
  */
-export function getBeginTimeOfTimeLine(start, scale = 60) {
+export function getBeginTimeOfTimeLine(start:dayjs.Dayjs, scale = 60) {
   validateScale(scale)
-  let timeBlocks;
+  let timeBlocks:number;
   let startClone = start.clone();
-  let rate = scale / 60;
+  const rate = scale / 60;
   if (scale > 60) {
     timeBlocks = Math.floor(start.hour() / rate);
     startClone = startClone.hour(timeBlocks * rate).minute(0).second(0);
@@ -55,7 +55,7 @@ export function getBeginTimeOfTimeLine(start, scale = 60) {
  * @param {number} [scale=60] 分割的刻度
  * @returns 时间块数量
  */
-export function calcScalesAbout2Times(timeStart, timeEnd, scale = 60) {
+export function calcScalesAbout2Times(timeStart:dayjs.Dayjs, timeEnd:dayjs.Dayjs, scale = 60) {
   if (timeStart.isAfter(timeEnd)) {
     throw new TypeError('错误的参数顺序，函数calcScalesAbout2Times的第一个时间参数必须大于第二个时间参数')
   }
