@@ -2,7 +2,7 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: './lib/index',
+  entry: './lib/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
@@ -37,7 +37,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['*', '.js', '.ts', '.tsx', '.jsx']
+    extensions: ['*', '.js', '.tsx', '.jsx']
   },
   performance: {
     hints: false

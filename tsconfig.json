@@ -6,7 +6,7 @@
     "target": "es5",
     "lib": ["es6", "dom"],
     "sourceMap": true,
-    "allowJs": false,
+    "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
     "rootDir": "lib",
@@ -19,8 +19,6 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": false,
     "allowSyntheticDefaultImports": true,
-    "declaration":true,
-    "declarationDir": "dist/declaration"
   },
   "exclude": [
     "node_modules",
