@@ -37,7 +37,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['*', '.js', '.tsx', '.jsx']
+    extensions: ['*', '.js', '.tsx', '.jsx','.ts']
   },
   performance: {
     hints: false
